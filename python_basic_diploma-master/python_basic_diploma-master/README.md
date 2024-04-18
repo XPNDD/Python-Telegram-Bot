@@ -1,4 +1,4 @@
-Будет использована [Fake Store Api](https://fakestoreapi.com)
+Использована [Fake Store Api](https://fakestoreapi.com)
 ---
 ---
 
