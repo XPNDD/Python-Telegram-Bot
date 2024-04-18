@@ -14,7 +14,8 @@
 ### 5) /custom - запрашивает по какой именно категории товаров будет производиться поиск, а также кол-во элементов, которые необходимо вывести, а также границы выборки (минимальную и максимальную цену)
 Затем бот выводит список товаров выбранной категории, удовлетворяющих границам выборки по цене.
 ### 6) /history - выводит краткую историю запросов пользователя (последние 10 запросов)
-Реализация данной команды планируется с помощью БД, в которой для каждого нового пользователя будет создаваться новый столбец (по Telegram-id), а в каждую новую строку будут записываться выбранные им команды с введенной доп. информацией. БД будет функционировать по принципу FIFO (first-in, first-out)
+Данная команда реализована с помощью БД sqlite и ORM PeeWee, текст каждого запроса и Telegram-id пользователя, который его сделал записывается в БД.
+При использовании команды из БД отбираются последние 10 запросов пользователя по Telegram-id того, кто ввел команду.
 ### Endpoints:
 
 [Пример ссылки для запроса (request)](https://fakestoreapi.com/products/categories) для получения списка доступных категорий товаров.
@@ -43,4 +44,3 @@ response = requests.get('https://fakestoreapi.com/products/category/jewelery').j
 {'id': 7, 'title': 'White Gold Plated Princess', 'price': 9.99, 'description': "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...", 'category': 'jewelery', 'image': 'https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg', 'rating': {'rate': 3, 'count': 400}}
 {'id': 8, 'title': 'Pierced Owl Rose Gold Plated Stainless Steel Double', 'price': 10.99, 'description': 'Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel', 'category': 'jewelery', 'image': 'https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg', 'rating': {'rate': 1.9, 'count': 100}}
 ```
-#### P.S. Реализация команды /history может измениться в ходе написания кода (но это вряд ли)
